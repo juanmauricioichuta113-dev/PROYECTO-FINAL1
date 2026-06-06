@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="es">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SimuCrisis — Simulador de Abastecimiento y Precios</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+        rel="stylesheet"
+    />
+    </head>
+    <body>
+    <!-- ========== HEADER / NAV ========== -->
+    <header class="site-header">
+        <div class="header-inner">
+        <a href="#inicio" class="logo">
+            <span class="logo-icon">⚡</span>
+            <span class="logo-text">SimuCrisis</span>
+        </a>
+        <nav class="main-nav" id="mainNav">
+            <a href="#inicio" class="nav-link active">Inicio</a>
+            <a href="#contexto" class="nav-link">Contexto</a>
+            <a href="#simuladores" class="nav-link">Simuladores</a>
+            <a href="#casos" class="nav-link">Casos de Estudio</a>
+            <a href="#conclusiones" class="nav-link">Conclusiones</a>
+            <a href="#creditos" class="nav-link">Créditos</a>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- ========== HERO / INICIO ========== -->
+        <section id="inicio" class="hero-section">
+        <div class="hero-bg-grid"></div>
+        <div class="hero-content">
+            <span class="hero-badge">Programación Web I — Proyecto Final</span>
+            <h1 class="hero-title">
+            Simulador de<br />
+            <em>Crisis Económica</em>
+            </h1>
+            <p class="hero-desc">
+            Una herramienta educativa interactiva para entender cómo el
+            desabastecimiento, el alza de precios y los bloqueos afectan a las
+            familias y comunidades bolivianas.
+            </p>
+            <div class="hero-pills">
+            <span class="pill">⛽ Carburantes</span>
+            <span class="pill">🛒 Alimentos</span>
+            <span class="pill">🚌 Transporte</span>
+            </div>
+            <a href="#simuladores" class="btn-primary">Comenzar simulación →</a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-card">
+            <span class="stat-num" data-target="3">0</span>
+            <span class="stat-label">Simuladores</span>
+            </div>
+            <div class="stat-card">
+            <span class="stat-num" data-target="5">0</span>
+            <span class="stat-label">Casos de Estudio</span>
+            </div>
+            <div class="stat-card">
+            <span class="stat-num" data-target="100">0</span>
+            <span class="stat-label">% Interactivo</span>
+            </div>
+        </div>
+        </section>
+
+        <!-- ========== CONTEXTO ========== -->
+        <section id="contexto" class="context-section">
+        <div class="container">
+            <div class="section-label">¿Por qué este proyecto?</div>
+            <h2 class="section-title">El contexto que nos rodea</h2>
+            <div class="context-grid">
+            <div class="context-card">
+                <div class="context-icon">⛽</div>
+                <h3>Escasez de Carburante</h3>
+                <p>
+                Las estaciones de servicio enfrentan reservas limitadas, largas
+                filas y restricciones de despacho, afectando el transporte y la
+                economía.
+                </p>
+            </div>
+            <div class="context-card">
+                <div class="context-icon">📈</div>
+                <h3>Inflación de Precios</h3>
+                <p>
+                Los productos de la canasta básica han incrementado su precio,
+                reduciendo el poder adquisitivo de las familias de ingresos
+                fijos.
+                </p>
+            </div>
+            <div class="context-card">
+                <div class="context-icon">🚧</div>
+                <h3>Bloqueos y Desvíos</h3>
+                <p>
+                Los bloqueos de carreteras generan desvíos, aumentan los costos
+                de transporte y afectan el abastecimiento de mercados y
+                comunidades.
+                </p>
+            </div>
+            <div class="context-card">
+                <div class="context-icon">👨‍👩‍👧</div>
+                <h3>Impacto Familiar</h3>
+                <p>
+                Las familias deben reorganizar su presupuesto ante la subida de
+                precios, el desabastecimiento y la incertidumbre económica.
+                </p>
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- ========== SIMULADORES ========== -->
+        <section id="simuladores" class="simulators-section">
+        <div class="container">
+            <div class="section-label">Herramientas interactivas</div>
+            <h2 class="section-title">Los tres simuladores</h2>
+
+            <!-- TABS -->
+            <div class="sim-tabs" role="tablist">
+            <button class="sim-tab active" data-tab="combustible" role="tab">
+                <span class="tab-icon">⛽</span> Carburante
+            </button>
+            <button class="sim-tab" data-tab="alimentos" role="tab">
+                <span class="tab-icon">🛒</span> Alimentos
+            </button>
+            <button class="sim-tab" data-tab="transporte" role="tab">
+                <span class="tab-icon">🚌</span> Transporte
+            </button>
+            </div>
+
+            <!-- ===== SIMULADOR A: CARBURANTE ===== -->
+            <div class="sim-panel active" id="panel-combustible" role="tabpanel">
+            <div class="sim-layout">
+                <div class="sim-form-col">
+                <h3 class="sim-title">⛽ Simulador de Reserva de Carburante</h3>
+                <p class="sim-desc">
+                    Calcula cuántos días durará la reserva de una estación de
+                    servicio según el consumo y reabastecimiento diario.
+                </p>
+                <form class="sim-form" id="formCombustible" novalidate>
+                    <div class="field-group">
+                    <label for="reservaInicial">Reserva inicial (litros)</label>
+                    <input
+                        type="number"
+                        id="reservaInicial"
+                        placeholder="Ej: 10000"
+                        min="1"
+                    />
+                    <span class="field-error" id="err-reservaInicial"></span>
+                    </div>
+                    <div class="field-group">
+                    <label for="consumoDiario">Consumo diario (litros)</label>
+                    <input
+                        type="number"
+                        id="consumoDiario"
+                        placeholder="Ej: 1200"
+                        min="1"
+                    />
+                    <span class="field-error" id="err-consumoDiario"></span>
+                    </div>
+                    <div class="field-group">
+                    <label for="reabastecimiento"
+                        >Reabastecimiento diario (litros)</label
+                    >
+                    <input
+                        type="number"
+                        id="reabastecimiento"
+                        placeholder="Ej: 300"
+                        min="0"
+                    />
+                    <span class="field-error" id="err-reabastecimiento"></span>
+                    </div>
+                    <div class="field-group">
+                    <label for="nivelCritico"
+                        >Nivel crítico de reserva (litros)</label
+                    >
+                    <input
+                        type="number"
+                        id="nivelCritico"
+                        placeholder="Ej: 2000"
+                        min="0"
+                    />
+                    <span class="field-error" id="err-nivelCritico"></span>
+                    </div>
+                    <div class="btn-row">
+                    <button
+                        type="button"
+                        class="btn-primary"
+                        id="btnCombustible"
+                    >
+                        Calcular
+                    </button>
+                    <button
+                        type="reset"
+                        class="btn-secondary"
+                        onclick="limpiarCombustible()"
+                    >
+                        Limpiar
+                    </button>
+                    </div>
+                </form>
+                </div>
+                <div class="sim-result-col" id="resultadoCombustible">
+                <div class="result-placeholder">
+                    <span class="placeholder-icon">⛽</span>
+                    <p>
+                    Ingresa los datos y presiona <strong>Calcular</strong> para
+                    ver el análisis de reserva.
+                    </p>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- ===== SIMULADOR B: ALIMENTOS ===== -->
+            <div class="sim-panel" id="panel-alimentos" role="tabpanel">
+            <div class="sim-layout">
+                <div class="sim-form-col">
+                <h3 class="sim-title">🛒 Simulador de Precios de Alimentos</h3>
+                <p class="sim-desc">
+                    Calcula cuánto más gasta tu familia debido al aumento de
+                    precios en productos de la canasta básica.
+                </p>
+                <form class="sim-form" id="formAlimentos" novalidate>
+                    <div class="productos-list" id="productosList">
+                    <div class="producto-row" data-index="0">
+                        <div class="producto-header">
+                        <span>Producto 1</span>
+                        <button
+                            type="button"
+                            class="btn-remove-producto"
+                            onclick="eliminarProducto(this)"
+                            style="display: none"
+                        >
+                            ✕
+                        </button>
+                        </div>
+                        <div class="producto-fields">
+                        <div class="field-group">
+                            <label>Nombre del producto</label>
+                            <input
+                            type="text"
+                            class="prod-nombre"
+                            placeholder="Ej: Arroz"
+                            />
+                        </div>
+                        <div class="field-row-2">
+                            <div class="field-group">
+                            <label>Precio anterior (Bs)</label>
+                            <input
+                                type="number"
+                                class="prod-precio-ant"
+                                placeholder="Ej: 8"
+                                min="0"
+                                step="0.01"
+                            />
+                            </div>
+                            <div class="field-group">
+                            <label>Precio actual (Bs)</label>
+                            <input
+                                type="number"
+                                class="prod-precio-act"
+                                placeholder="Ej: 11"
+                                min="0"
+                                step="0.01"
+                            />
+                            </div>
+                        </div>
+                        <div class="field-row-2">
+                            <div class="field-group">
+                            <label>Cantidad por semana</label>
+                            <input
+                                type="number"
+                                class="prod-cantidad"
+                                placeholder="Ej: 3"
+                                min="1"
+                            />
+                            </div>
+                            <div class="field-group">
+                            <label>Número de semanas</label>
+                            <input
+                                type="number"
+                                class="prod-semanas"
+                                placeholder="Ej: 4"
+                                min="1"
+                            />
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    <button
+                    type="button"
+                    class="btn-add-producto"
+                    id="btnAgregarProducto"
+                    >
+                    + Agregar producto
+                    </button>
+                    <div class="btn-row" style="margin-top: 16px">
+                    <button type="button" class="btn-primary" id="btnAlimentos">
+                        Calcular
+                    </button>
+                    <button
+                        type="button"
+                        class="btn-secondary"
+                        onclick="limpiarAlimentos()"
+                    >
+                        Limpiar
+                    </button>
+                    </div>
+                </form>
+                </div>
+                <div class="sim-result-col" id="resultadoAlimentos">
+                <div class="result-placeholder">
+                    <span class="placeholder-icon">🛒</span>
+                    <p>
+                    Ingresa tus productos y presiona
+                    <strong>Calcular</strong> para ver el impacto económico.
+                    </p>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- ===== SIMULADOR C: TRANSPORTE ===== -->
+            <div class="sim-panel" id="panel-transporte" role="tabpanel">
+            <div class="sim-layout">
+                <div class="sim-form-col">
+                <h3 class="sim-title">🚌 Simulador de Costo de Transporte</h3>
+                <p class="sim-desc">
+                    Estima el costo adicional por desvíos, bloqueos o rutas más
+                    largas en tu traslado diario.
+                </p>
+                <form class="sim-form" id="formTransporte" novalidate>
+                    <div class="field-group">
+                    <label for="distNormal">Distancia normal (km)</label>
+                    <input
+                        type="number"
+                        id="distNormal"
+                        placeholder="Ej: 10"
+                        min="0.1"
+                        step="0.1"
+                    />
+                    <span class="field-error" id="err-distNormal"></span>
+                    </div>
+                    <div class="field-group">
+                    <label for="distDesvio">Distancia con desvío (km)</label>
+                    <input
+                        type="number"
+                        id="distDesvio"
+                        placeholder="Ej: 16"
+                        min="0.1"
+                        step="0.1"
+                    />
+                    <span class="field-error" id="err-distDesvio"></span>
+                    </div>
+                    <div class="field-group">
+                    <label for="costoPorKm">Costo por kilómetro (Bs)</label>
+                    <input
+                        type="number"
+                        id="costoPorKm"
+                        placeholder="Ej: 2"
+                        min="0.01"
+                        step="0.01"
+                    />
+                    <span class="field-error" id="err-costoPorKm"></span>
+                    </div>
+                    <div class="field-group">
+                    <label for="viajesSemana"
+                        >Número de viajes por semana</label
+                    >
+                    <input
+                        type="number"
+                        id="viajesSemana"
+                        placeholder="Ej: 5"
+                        min="1"
+                    />
+                    <span class="field-error" id="err-viajesSemana"></span>
+                    </div>
+                    <div class="btn-row">
+                    <button
+                        type="button"
+                        class="btn-primary"
+                        id="btnTransporte"
+                    >
+                        Calcular
+                    </button>
+                    <button
+                        type="reset"
+                        class="btn-secondary"
+                        onclick="limpiarTransporte()"
+                    >
+                        Limpiar
+                    </button>
+                    </div>
+                </form>
+                </div>
+                <div class="sim-result-col" id="resultadoTransporte">
+                <div class="result-placeholder">
+                    <span class="placeholder-icon">🚌</span>
+                    <p>
+                    Ingresa las distancias y presiona
+                    <strong>Calcular</strong> para ver el costo adicional.
+                    </p>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- ========== CASOS DE ESTUDIO ========== -->
+        <section id="casos" class="cases-section">
+        <div class="container">
+            <div class="section-label">Ejemplos verificados</div>
+            <h2 class="section-title">Casos de estudio para probar</h2>
+            <p class="section-sub">
+            Haz clic en cualquier caso para cargarlo automáticamente en el
+            simulador correspondiente.
+            </p>
+            <div class="cases-grid">
+            <!-- Caso 1 -->
+            <div class="case-card" data-simulator="combustible">
+                <div class="case-badge badge-fuel">Caso 1 — Carburante</div>
+                <h4>Reserva de estación de servicio</h4>
+                <table class="case-table">
+                <tr>
+                    <th>Dato</th>
+                    <th>Valor</th>
+                </tr>
+                <tr>
+                    <td>Reserva inicial</td>
+                    <td>10,000 litros</td>
+                </tr>
+                <tr>
+                    <td>Consumo diario</td>
+                    <td>1,200 litros</td>
+                </tr>
+                <tr>
+                    <td>Reabastecimiento</td>
+                    <td>300 litros/día</td>
+                </tr>
+                <tr>
+                    <td>Nivel crítico</td>
+                    <td>2,000 litros</td>
+                </tr>
+                </table>
+                <p class="case-expected">
+                ✅ Resultado esperado: La reserva llega al nivel crítico
+                aproximadamente en el día 9.
+                </p>
+                <button class="btn-case" onclick="cargarCaso('combustible1')">
+                Cargar en simulador →
+                </button>
+            </div>
+
+            <!-- Caso 2 -->
+            <div class="case-card" data-simulator="alimentos">
+                <div class="case-badge badge-food">Caso 2 — Alimentos</div>
+                <h4>Aumento de precio en canasta básica</h4>
+                <table class="case-table">
+                <tr>
+                    <th>Producto</th>
+                    <th>Antes</th>
+                    <th>Ahora</th>
+                    <th>Cant/sem</th>
+                </tr>
+                <tr>
+                    <td>Arroz</td>
+                    <td>8 Bs</td>
+                    <td>11 Bs</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Papa</td>
+                    <td>7 Bs</td>
+                    <td>10 Bs</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Aceite</td>
+                    <td>12 Bs</td>
+                    <td>18 Bs</td>
+                    <td>1</td>
+                </tr>
+                </table>
+                <p class="case-expected">
+                ✅ Resultado esperado: El gasto mensual aumenta
+                considerablemente por el alza.
+                </p>
+                <button class="btn-case" onclick="cargarCaso('alimentos1')">
+                Cargar en simulador →
+                </button>
+            </div>
+
+            <!-- Caso 3 -->
+            <div class="case-card" data-simulator="transporte">
+                <div class="case-badge badge-transport">Caso 3 — Transporte</div>
+                <h4>Desvío por bloqueo de carretera</h4>
+                <table class="case-table">
+                <tr>
+                    <th>Dato</th>
+                    <th>Valor</th>
+                </tr>
+                <tr>
+                    <td>Distancia normal</td>
+                    <td>10 km</td>
+                </tr>
+                <tr>
+                    <td>Distancia con desvío</td>
+                    <td>16 km</td>
+                </tr>
+                <tr>
+                    <td>Costo por km</td>
+                    <td>2 Bs</td>
+                </tr>
+                <tr>
+                    <td>Viajes por semana</td>
+                    <td>5</td>
+                </tr>
+                </table>
+                <p class="case-expected">
+                ✅ Resultado esperado: Gasto adicional de 60 Bs/semana.
+                </p>
+                <button class="btn-case" onclick="cargarCaso('transporte1')">
+                Cargar en simulador →
+                </button>
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- ========== CONCLUSIONES ========== -->
+        <section id="conclusiones" class="conclusions-section">
+        <div class="container">
+            <div class="section-label">Lo aprendido</div>
+            <h2 class="section-title">Conclusiones</h2>
+            <div class="conclusions-grid">
+            <div class="conclusion-item">
+                <div class="conc-num">01</div>
+                <div class="conc-body">
+                <h4>Los modelos matemáticos simplifican la realidad</h4>
+                <p>
+                    Aunque el mundo es complejo, fórmulas simples como la de
+                    reserva o porcentaje de incremento nos permiten comprender
+                    tendencias y tomar decisiones informadas.
+                </p>
+                </div>
+            </div>
+            <div class="conclusion-item">
+                <div class="conc-num">02</div>
+                <div class="conc-body">
+                <h4>El DOM conecta la lógica con el usuario</h4>
+                <p>
+                    Gracias a JavaScript y el DOM, los cálculos dejan de ser
+                    abstractos y se convierten en información visual, comprensible
+                    y útil para cualquier persona.
+                </p>
+                </div>
+            </div>
+            <div class="conclusion-item">
+                <div class="conc-num">03</div>
+                <div class="conc-body">
+                <h4>El diseño responsivo es fundamental</h4>
+                <p>
+                    En Bolivia, la mayoría de usuarios accede desde celular. Un
+                    diseño adaptable garantiza que esta herramienta sea accesible
+                    para todos.
+                </p>
+                </div>
+            </div>
+            <div class="conclusion-item">
+                <div class="conc-num">04</div>
+                <div class="conc-body">
+                <h4>La programación es una herramienta de análisis social</h4>
+                <p>
+                    Este proyecto demuestra que el código no solo sirve para
+                    aplicaciones comerciales, sino también para entender y
+                    comunicar problemas de la vida cotidiana.
+                </p>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- ========== CRÉDITOS ========== -->
+        <section id="creditos" class="credits-section">
+        <div class="container">
+            <div class="credits-card">
+            <div class="credits-left">
+                <span class="logo-icon" style="font-size: 2.5rem">⚡</span>
+                <h3>SimuCrisis</h3>
+                <p>Proyecto Final — Programación Web I</p>
+            </div>
+            <div class="credits-right">
+                <div class="credit-row">
+                <span class="cr-label">Materia:</span
+                ><span>Programación Web I</span>
+                </div>
+                <div class="credit-row">
+                <span class="cr-label">Tecnologías:</span
+                ><span>HTML5 · CSS3 · JavaScript · DOM</span>
+                </div>
+                <div class="credit-row">
+                <span class="cr-label">Simuladores:</span
+                ><span>Carburante · Alimentos · Transporte</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+        <span>© 2025 SimuCrisis — Programación Web I</span>
+        <span>Hecho con HTML5, CSS3 y JavaScript puro</span>
+        </div>
+    </footer>
+
+    <script src="./js/script.js"></script>
+    </body>
+</html>
